@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+nav {
+  border: green;
+}
+
+
+.football {
+  color: pink;
+  text-align: left;
+
+}
+
+.coding {
+  text-align: center
+}
+
+.cooking{
+    text-align: right;
+
+}
