@@ -5,6 +5,8 @@ import TopNavBar from './Components/TopNavBar';
 import TopicsNavBar from './Components/TopicsNavBar';
 import ArticleList from './Components/ArticleList';
 import { Router } from '@reach/router';
+import SelectedArticle from './Components/SelectedArticle'
+import CommentsForArticle from './Components/CommentsForArticle'
 
 
 function App() {
@@ -15,7 +17,9 @@ function App() {
       <TopicsNavBar className='TopicsNavBar' />
       <Router>
         <Homepage path='/' />
-        <ArticleByTopicList path='/articles?topic=:topic' />
+        <ArticlesByTopicList path='/:topic' />
+        <SelectedArticleByID path='/articles/:article_id' />
+        <CommentsBySelectedArticle path='/:article_id/comments' />
       </Router>
     </div>
   );
@@ -24,12 +28,13 @@ function App() {
 const Homepage = () => {
   return (
     <div>
+      <p>THESE ARE ALL THE ARTICLES!</p>
       <ArticleList />
     </div>
   )
 }
 
-const ArticleByTopicList = ({ topic }) => {
+const ArticlesByTopicList = ({ topic }) => {
   return (
     <div>
       <p>All Articles for {topic}</p>
@@ -38,19 +43,24 @@ const ArticleByTopicList = ({ topic }) => {
   )
 }
 
+const SelectedArticleByID = ({ article_id }) => {
+  return (
+    <div>
+      <ArticleList />
+      <SelectedArticle id={article_id} />
+    </div>
+  )
+}
+
+const CommentsBySelectedArticle = ({ article_id }) => {
+  return (
+    <div>
+      <SelectedArticle id={article_id} />
+      <CommentsForArticle id={article_id} />
+    </div>
+  )
+}
+
 export default App;
 
 
-
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <TopNavBar className='TopNavBar' />
-//       <Header className='Header' />
-//       <TopicsNavBar className='TopicsNavBar' />
-//       <ArticleList />
-//     </div>
-//   );
-// }
