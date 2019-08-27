@@ -36,16 +36,16 @@ class SelectedArticle extends Component {
     if (isLoading) return <p>Loading...</p>
 
     // const { isLoading, article: { title } } = this.state;
-    const { title, body, article_id } = article;
+    const { title, body, article_id, topic, author } = article;
     return (
       <div className='selectedArticle'>
         <p>THIS IS YOUR SELECTED ARTICLE</p>
         <p>{title}</p>
+        <Link to={`/users/${author}`}><p>{author}</p>
+        </Link>
+        <p>{topic}</p>
         <p>{body}</p>
         <Link to={`/${article_id}/comments`}><p>Comments</p></Link>
-
-        {/* <p>{topic}</p>
-        <p>{author}</p> */}
       </div>
     );
   }

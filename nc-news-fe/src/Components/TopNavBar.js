@@ -3,13 +3,13 @@ import { Link } from '@reach/router';
 import SearchBox from './SearchBox'
 
 
-const TopNavBar = () => {
+const TopNavBar = ({ updateSearchTerm }) => {
   return (
     <nav>
-      {/* <Link to='/'>NC</Link> */}
       <p>NC</p>
       <Link to='/'>News</Link>
       <SearchBox />
+      {/* path='/users/:username' */}
     </nav>
   );
 };

@@ -7,6 +7,7 @@ import ArticleList from './Components/ArticleList';
 import { Router } from '@reach/router';
 import SelectedArticle from './Components/SelectedArticle'
 import CommentsForArticle from './Components/CommentsForArticle'
+import UserByUsernamePage from './Components/UserByUsernamePage'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <ArticlesByTopicList path='/:topic' />
         <SelectedArticleByID path='/articles/:article_id' />
         <CommentsBySelectedArticle path='/:article_id/comments' />
+        <UserbyUsername path='/user/:username' />
       </Router>
     </div>
   );
@@ -58,6 +60,13 @@ const CommentsBySelectedArticle = ({ article_id }) => {
       <SelectedArticle id={article_id} />
       <CommentsForArticle id={article_id} />
     </div>
+  )
+}
+
+const UserbyUsername = ({ username }) => {
+  console.log(username)
+  return (
+    <UserByUsernamePage username={username} />
   )
 }
 

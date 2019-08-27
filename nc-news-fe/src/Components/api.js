@@ -29,3 +29,10 @@ export const getCommentsForArticle = (id) => {
       return data
     })
 }
+
+export const getUser = username => {
+  return axios.get(`${baseURL}/users/${username}`)
+    .then(({ data }) => {
+      return data.user
+    })
+}
