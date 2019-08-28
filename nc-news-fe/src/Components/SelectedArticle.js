@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import * as api from './api';
 import '../App.css';
 import { Link } from '@reach/router';
+import ArticleVoteUpdater from './ArticleVoteUpdater'
+
 
 
 class SelectedArticle extends Component {
@@ -33,10 +35,10 @@ class SelectedArticle extends Component {
   render() {
     // console.log(this.state)
     const { article, isLoading } = this.state
+    const { loggedInUser } = this.props;
     if (isLoading) return <p>Loading...</p>
+    const { title, body, article_id, topic, author, votes } = article;
 
-    // const { isLoading, article: { title } } = this.state;
-    const { title, body, article_id, topic, author } = article;
     return (
       <div className='selectedArticle'>
         <p>THIS IS YOUR SELECTED ARTICLE</p>
@@ -45,6 +47,9 @@ class SelectedArticle extends Component {
         </Link>
         <p>{topic}</p>
         <p>{body}</p>
+        {author !== loggedInUser && (
+          <ArticleVoteUpdater article_id={article_id} votes={votes} />
+        )}
         <Link to={`/${article_id}/comments`}><p>Comments</p></Link>
       </div>
     );

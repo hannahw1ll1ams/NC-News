@@ -15,18 +15,19 @@ class App extends Component {
     loggedInUser: 'grumpy19'
   }
   render() {
+    const { loggedInUser } = this.state;
     return (
       <div className="App">
-        <TopNavBar className='TopNavBar' loggedInUser={this.state.loggedInUser} />
+        <TopNavBar className='TopNavBar' loggedInUser={loggedInUser} />
         <Header className='Header' />
         <TopicsNavBar className='TopicsNavBar' />
         <Router>
-          <Homepage path='/' />
-          <ArticlesByTopicList path='/:topic' />
-          <SelectedArticleByID path='/articles/:article_id' />
-          <CommentsBySelectedArticle path='/:article_id/comments' loggedInUser={this.state.loggedInUser} />
+          <Homepage path='/' loggedInUser={loggedInUser} />
+          <ArticlesByTopicList path='/:topic' loggedInUser={loggedInUser} />
+          <SelectedArticleByID path='/articles/:article_id' loggedInUser={loggedInUser} />
+          <CommentsBySelectedArticle path='/:article_id/comments' loggedInUser={loggedInUser} />
           <UserbyUsername path='/users/:username' />
-          <ArticlesByUserList path='/articles/user/:username' />
+          <ArticlesByUserList path='/articles/user/:username' loggedInUser={loggedInUser} />
         </Router>
       </div>
     );
@@ -51,11 +52,11 @@ const ArticlesByTopicList = ({ topic }) => {
   )
 }
 
-const SelectedArticleByID = ({ article_id }) => {
+const SelectedArticleByID = ({ article_id, loggedInUser }) => {
   return (
     <div>
       <ArticleList />
-      <SelectedArticle id={article_id} />
+      <SelectedArticle id={article_id} loggedInUser={loggedInUser} />
     </div>
   )
 }

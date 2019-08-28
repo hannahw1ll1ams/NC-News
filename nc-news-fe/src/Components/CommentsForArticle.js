@@ -38,15 +38,14 @@ class CommentsForArticle extends Component {
   render() {
     const { comments, isLoading } = this.state;
     const { loggedInUser } = this.props;
-    // const { loggedInUser } = this.props
     if (isLoading) return <p>Loading...</p>
     return (
       <div>
         <h2>COMMENTS</h2>
         <ul>
           {comments.map(comment => {
-            const { comment_id, author, body, created_at } = comment;
-            return <CommentCard key={comment_id} id={comment_id} author={author} body={body} created_at={created_at} loggedInUser={loggedInUser} deleteCommentByClick={this.deleteCommentByClick} />
+            const { comment_id, author, body, created_at, votes } = comment;
+            return <CommentCard key={comment_id} votes={votes} id={comment_id} author={author} body={body} created_at={created_at} loggedInUser={loggedInUser} deleteCommentByClick={this.deleteCommentByClick} />
           })}
         </ul>
       </div>

@@ -9,8 +9,7 @@ const SingleArticle = ({ title, topic, created_at, author, votes, id }) => {
       <p>{topic}</p>
       <Link to={`/users/${author}`} ><p>{author}</p></Link>
       <p>{created_at}</p>
-      {/* <p>{id}</p>
-      <p>{votes}</p> */}
+      <p>Comment Count:</p>
     </li>
   );
 };
