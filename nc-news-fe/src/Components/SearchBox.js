@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as api from './api';
+// import * as api from './api';
 import { navigate } from "@reach/router"
 
 
@@ -17,29 +17,25 @@ class SearchBox extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({ username: this.state.input })
+    console.log(this.state.username, '<----handleSubmit')
     navigate(`/users/${this.state.username}`)
   }
-  //   async event => {
-  //     const newInvoice = await this.handleSubmit
-  //     navigate(`/invoices/${newInvoice.id}`)
-  //   }
+
+
+  // componentDidMount() {
+  //   this.fetchUserbyUsername();
   // }
 
-
-  componentDidMount() {
-    this.fetchUserbyUsername();
-  }
-
-  fetchUserbyUsername = () => {
-    const { username } = this.state;
-    api.getUser(username).then((username) => {
-      this.setState({ username, isLoading: false })
-    })
-  }
+  // fetchUserbyUsername = () => {
+  //   const { username } = this.state;
+  //   api.getUser(username).then((username) => {
+  //     this.setState({ username, isLoading: false })
+  //   })
+  // }
 
   render() {
-    const { isLoading } = this.state
-    if (isLoading) return <p>Loading...</p>
+    // const { isLoading } = this.state
+    // if (isLoading) return <p>Loading...</p>
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

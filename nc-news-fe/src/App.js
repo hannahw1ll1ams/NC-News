@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Components/Header'
 import './App.css';
 import TopNavBar from './Components/TopNavBar';
@@ -10,21 +10,27 @@ import CommentsForArticle from './Components/CommentsForArticle'
 import UserByUsernamePage from './Components/UserByUsernamePage'
 
 
-function App() {
-  return (
-    <div className="App">
-      <TopNavBar className='TopNavBar' />
-      <Header className='Header' />
-      <TopicsNavBar className='TopicsNavBar' />
-      <Router>
-        <Homepage path='/' />
-        <ArticlesByTopicList path='/:topic' />
-        <SelectedArticleByID path='/articles/:article_id' />
-        <CommentsBySelectedArticle path='/:article_id/comments' />
-        <UserbyUsername path='/user/:username' />
-      </Router>
-    </div>
-  );
+class App extends Component {
+  state = {
+    loggedInUser: 'JessJelly'
+  }
+  render() {
+    return (
+      <div className="App">
+        <TopNavBar className='TopNavBar' />
+        <Header className='Header' />
+        <TopicsNavBar className='TopicsNavBar' />
+        <Router>
+          <Homepage path='/' />
+          <ArticlesByTopicList path='/:topic' />
+          <SelectedArticleByID path='/articles/:article_id' />
+          <CommentsBySelectedArticle path='/:article_id/comments' />
+          <UserbyUsername path='/users/:username' />
+          <ArticlesByUserList path='/articles/user/:username' />
+        </Router>
+      </div>
+    );
+  }
 }
 
 const Homepage = () => {
@@ -64,9 +70,15 @@ const CommentsBySelectedArticle = ({ article_id }) => {
 }
 
 const UserbyUsername = ({ username }) => {
-  console.log(username)
   return (
     <UserByUsernamePage username={username} />
+  )
+}
+
+const ArticlesByUserList = ({ username }) => {
+  console.log(username, "<--- user")
+  return (
+    <ArticleList author={username} />
   )
 }
 

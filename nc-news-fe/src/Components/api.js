@@ -6,9 +6,8 @@ const baseURL = 'https://hw-nc-news.herokuapp.com/api'
 
 //https://hw-nc-news.herokuapp.com/api/articles?topic=:topic
 
-export const getArticles = (topic) => {
-  // console.log(topic)
-  return axios.get(`${baseURL}/articles`, { params: { topic } })
+export const getArticles = (topic, author) => {
+  return axios.get(`${baseURL}/articles`, { params: { topic, author } })
     .then(({ data }) => {
       return data
     })

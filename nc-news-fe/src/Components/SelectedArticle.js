@@ -23,7 +23,7 @@ class SelectedArticle extends Component {
 
   fetchSingleArticle = () => {
     const { id } = this.props
-    console.log(id);
+    console.log(id, "<--- in selectedArticle");
     api.getSingleArticle(id).then(({ article }) => {
       // console.log(article)
       this.setState({ article, isLoading: false })
@@ -31,7 +31,7 @@ class SelectedArticle extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     const { article, isLoading } = this.state
     if (isLoading) return <p>Loading...</p>
 

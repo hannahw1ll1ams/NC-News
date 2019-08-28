@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import * as api from './api';
+import { Link } from '@reach/router';
+
 
 class UserByUsernamePage extends Component {
   state = {
     user: null,
-    username: null
+    isLoading: true
   }
 
   componentDidMount() {
@@ -13,57 +15,31 @@ class UserByUsernamePage extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     console.log('updateeeeeee!!')
-    if (prevProps.user !== this.props.user) {
-      this.fetchArticles();
+    if (prevProps.username !== this.props.username) {
+      this.fetchUserbyUsername();
     }
   }
 
   fetchUserbyUsername = () => {
     const { username } = this.props;
-    console.log(username)
+    // console.log(username)
     api.getUser(username).then((user) => {
       this.setState({ user, isLoading: false })
     })
   }
   render() {
+    const { user, isLoading } = this.state;
+    if (isLoading) return <p>Loading...</p>
+    const { username, avatar_url, name } = user;
     return (
       <div>
-
+        <p>INTRODUCING {name}!</p>
+        <p>Username: {username}</p>
+        <img src={avatar_url} alt={name} />
+        <Link to={`/articles/user/${username}`}><p>For all articles by {name}</p></Link>
       </div>
     );
   }
 }
 
 export default UserByUsernamePage;
-
-
-
-// const Invoices = props => (
-//   <div>
-//     {/* ... */}
-
-//     <form
-//       onSubmit={event => {
-//         event.preventDefault()
-//         const id = event.target.elements[0].value
-//         event.target.reset()
-
-//         // pretend like we saved a record to the DB here
-//         // and then we navigate imperatively
-//         navigate(`/invoices/${id}`)
-//       }}
-//     >
-//       <p>
-//         <label>
-//           New Invoice ID: <input type="text" />
-//         </label>
-//         <button type="submit">create</button>
-//       </p>
-//     </form>
-
-//     {props.children}
-//   </div>
-// )
-// navigate(`/invoices/${id}`)
-// // becomes
-// props.navigate(id)

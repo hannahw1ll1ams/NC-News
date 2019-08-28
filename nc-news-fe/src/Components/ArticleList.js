@@ -23,10 +23,12 @@ class ArticleList extends Component {
   }
 
   fetchArticles = () => {
-    const { topic } = this.props
-    console.log(topic)
-    api.getArticles(topic).then(({ articles }) => {
-      console.log(articles)
+    const { topic, author } = this.props
+    // console.log(topic, "<---topic")
+    // console.log(username, "<---username")
+
+    api.getArticles(topic, author).then(({ articles }) => {
+      // console.log(articles)
       this.setState({ articles, isLoading: false })
     })
   }
