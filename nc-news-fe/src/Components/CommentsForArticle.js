@@ -26,8 +26,19 @@ class CommentsForArticle extends Component {
     })
   }
 
+  deleteCommentByClick = (id) => {
+    console.log(id)
+    api.deleteComment(id).then(() => {
+      this.setState(({ comments }) => {
+        return { comments: comments.filter(comment => comment.comment_id !== id) }
+      })
+    })
+  }
+
   render() {
     const { comments, isLoading } = this.state;
+    const { loggedInUser } = this.props;
+    // const { loggedInUser } = this.props
     if (isLoading) return <p>Loading...</p>
     return (
       <div>
@@ -35,7 +46,7 @@ class CommentsForArticle extends Component {
         <ul>
           {comments.map(comment => {
             const { comment_id, author, body, created_at } = comment;
-            return <CommentCard id={comment_id} author={author} body={body} created_at={created_at} />
+            return <CommentCard key={comment_id} id={comment_id} author={author} body={body} created_at={created_at} loggedInUser={loggedInUser} deleteCommentByClick={this.deleteCommentByClick} />
           })}
         </ul>
       </div>

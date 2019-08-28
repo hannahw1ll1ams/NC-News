@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from '@reach/router';
+// import deleteCommentByClick from './DeleteCommentButton'
 
 
-const CommentCard = ({ id, author, body, created_at }) => {
+const CommentCard = ({ id, author, body, created_at, loggedInUser, deleteCommentByClick }) => {
   return (
     <div>
-      <li>
+      <li key={id}>
         <Link to={`/users/${author}`} ><p>{author}</p></Link>
-        <p>{created_at}</p>
         <p>{body}</p>
         <p>{created_at}</p>
+        {/* <DeleteCommentButton loggedInUser={loggedInUser} /> */}
+        <button onClick={() => { deleteCommentByClick(id) }} type='submit'>Delete</button>
       </li>
     </div>
   );

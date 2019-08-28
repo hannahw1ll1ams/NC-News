@@ -35,3 +35,7 @@ export const getUser = username => {
       return data.user
     })
 }
+
+export const deleteComment = (id) => {
+  return axios.delete(`${baseURL}/comments/${id}`)
+}
