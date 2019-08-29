@@ -77,7 +77,6 @@ const UserbyUsername = ({ username }) => {
 }
 
 const ArticlesByUserList = ({ username }) => {
-  console.log(username, "<--- user")
   return (
     <ArticleList author={username} />
   )

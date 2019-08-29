@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as api from './api';
 import CommentCard from './CommentCard'
+import CommentAdder from './CommentAdder'
+
 
 class CommentsForArticle extends Component {
   state = {
@@ -13,7 +15,6 @@ class CommentsForArticle extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('updateeeeeee!!')
     if (prevProps.id !== this.props.id) {
       this.fetchCommentsForArticle();
     }
@@ -27,11 +28,18 @@ class CommentsForArticle extends Component {
   }
 
   deleteCommentByClick = (id) => {
-    console.log(id)
     api.deleteComment(id).then(() => {
       this.setState(({ comments }) => {
         return { comments: comments.filter(comment => comment.comment_id !== id) }
       })
+    })
+  }
+
+  postNewComment = (newComment) => {
+    const { loggedInUser, id } = this.props;
+    api.sendNewComment(newComment, loggedInUser, id).then((newlyPostedComment) => {
+      const allComments = [newlyPostedComment, ...this.state.comments];
+      this.setState({ comments: allComments })
     })
   }
 
@@ -42,6 +50,7 @@ class CommentsForArticle extends Component {
     return (
       <div>
         <h2>COMMENTS</h2>
+        <CommentAdder postNewComment={this.postNewComment} />
         <ul>
           {comments.map(comment => {
             const { comment_id, author, body, created_at, votes } = comment;

@@ -25,19 +25,16 @@ class SelectedArticle extends Component {
 
   fetchSingleArticle = () => {
     const { id } = this.props
-    console.log(id, "<--- in selectedArticle");
     api.getSingleArticle(id).then(({ article }) => {
-      // console.log(article)
       this.setState({ article, isLoading: false })
     })
   }
 
   render() {
-    // console.log(this.state)
     const { article, isLoading } = this.state
     const { loggedInUser } = this.props;
     if (isLoading) return <p>Loading...</p>
-    const { title, body, article_id, topic, author, votes } = article;
+    const { title, body, article_id, topic, author, votes, comment_count } = article;
 
     return (
       <div className='selectedArticle'>
@@ -50,7 +47,7 @@ class SelectedArticle extends Component {
         {author !== loggedInUser && (
           <ArticleVoteUpdater article_id={article_id} votes={votes} />
         )}
-        <Link to={`/${article_id}/comments`}><p>Comments</p></Link>
+        <Link to={`/${article_id}/comments`}><p>Comments : {comment_count}</p></Link>
       </div>
     );
   }

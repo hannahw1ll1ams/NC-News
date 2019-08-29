@@ -47,3 +47,12 @@ export const patchVotes = (votesDifference, comment_id) => {
 export const patchArticleVotes = (votesDifference, article_id) => {
   return axios.patch(`${baseURL}/articles/${article_id}`, { inc_votes: votesDifference })
 }
+
+export const sendNewComment = (newComment, loggedInUser, id) => {
+  return axios.post(`${baseURL}/articles/${id}/comments`, {
+    username: loggedInUser,
+    body: newComment
+  }).then(({ data }) => {
+    return data.comment
+  })
+}
