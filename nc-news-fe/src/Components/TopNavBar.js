@@ -10,7 +10,6 @@ const TopNavBar = ({ loggedInUser }) => {
       <p>Logged in as: {loggedInUser}</p>
       <Link to='/'>News</Link>
       <SearchBox />
-      {/* path='/users/:username' */}
     </nav>
   );
 };

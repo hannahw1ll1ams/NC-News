@@ -8,6 +8,7 @@ import { Router } from '@reach/router';
 import SelectedArticle from './Components/SelectedArticle'
 import CommentsForArticle from './Components/CommentsForArticle'
 import UserByUsernamePage from './Components/UserByUsernamePage'
+import ErrorPage from './Components/ErrorPage'
 
 
 class App extends Component {
@@ -23,11 +24,13 @@ class App extends Component {
         <TopicsNavBar className='TopicsNavBar' />
         <Router>
           <Homepage path='/' loggedInUser={loggedInUser} />
-          <ArticlesByTopicList path='/:topic' loggedInUser={loggedInUser} />
+          <ArticlesByTopicList path='/topics/:topic' loggedInUser={loggedInUser} />
+          <SelectedArticleByID path='/:topic/articles/:article_id' loggedInUser={loggedInUser} />
           <SelectedArticleByID path='/articles/:article_id' loggedInUser={loggedInUser} />
           <CommentsBySelectedArticle path='/:article_id/comments' loggedInUser={loggedInUser} />
           <UserbyUsername path='/users/:username' />
           <ArticlesByUserList path='/articles/user/:username' loggedInUser={loggedInUser} />
+          <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
         </Router>
       </div>
     );
@@ -52,10 +55,10 @@ const ArticlesByTopicList = ({ topic }) => {
   )
 }
 
-const SelectedArticleByID = ({ article_id, loggedInUser }) => {
+const SelectedArticleByID = ({ topic, article_id, loggedInUser }) => {
   return (
     <div>
-      <ArticleList />
+      <ArticleList topic={topic} article_id={article_id} />
       <SelectedArticle id={article_id} loggedInUser={loggedInUser} />
     </div>
   )
