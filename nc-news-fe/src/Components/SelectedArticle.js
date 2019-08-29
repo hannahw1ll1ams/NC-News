@@ -3,13 +3,14 @@ import * as api from './api';
 import '../App.css';
 import { Link } from '@reach/router';
 import ArticleVoteUpdater from './ArticleVoteUpdater'
-
+import ErrorPage from './ErrorPage'
 
 
 class SelectedArticle extends Component {
   state = {
     article: null,
-    isLoading: true
+    isLoading: true,
+    error: null
   }
 
   componentDidMount() {
@@ -28,12 +29,22 @@ class SelectedArticle extends Component {
     api.getSingleArticle(id).then(({ article }) => {
       this.setState({ article, isLoading: false })
     })
+      .catch(error => {
+        console.dir(error)
+        this.setState({
+          error: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   render() {
-    const { article, isLoading } = this.state
+    const { article, isLoading, error } = this.state
     const { loggedInUser } = this.props;
     if (isLoading) return <p>Loading...</p>
+    if (error) return <ErrorPage error={error} />
     const { title, body, article_id, topic, author, votes, comment_count } = article;
 
     return (
