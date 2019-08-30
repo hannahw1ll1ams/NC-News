@@ -26,7 +26,7 @@ class SearchBox extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="Find a user" onChange={this.handleChange} />
+          <input placeholder="Find a user" onChange={this.handleChange} required />
           <button type='submit'>Search</button>
         </form>
       </div >

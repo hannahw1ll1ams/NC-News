@@ -25,7 +25,7 @@ class CommentCreator extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             TYPE YOUR NEW COMMENT HERE:
-          <input name="comment_body" onChange={this.handleChange} />
+          <input name="comment_body" onChange={this.handleChange} required />
             <button>Submit</button>
           </label>
         </form>
