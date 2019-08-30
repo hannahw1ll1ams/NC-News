@@ -15,7 +15,7 @@ const CommentCard = ({ votes, id, author, body, created_at, loggedInUser, delete
           (<button onClick={() => { deleteCommentByClick(id) }} type='submit'>Delete</button>)
         }
         {author !== loggedInUser && (
-          <VoteUpdater comment_id={id} votes={votes} />
+          <VoteUpdater id={id} votes={votes} item='comments' />
         )}
       </li>
     </div>

@@ -9,11 +9,12 @@ class VoteUpdater extends Component {
   }
 
   VotesChanger = (votesDifference) => {
-    const { comment_id } = this.props;
+    const { id, item } = this.props;
+    console.log(item)
     this.setState(currentState => {
       return { votesChange: currentState.votesChange + votesDifference }
     })
-    api.patchVotes(votesDifference, comment_id)
+    api.patchVotes(votesDifference, id, item)
   }
 
   render() {

@@ -37,12 +37,8 @@ export const deleteComment = (id) => {
   return axios.delete(`${baseURL}/comments/${id}`)
 }
 
-export const patchVotes = (votesDifference, comment_id) => {
-  return axios.patch(`${baseURL}/comments/${comment_id}`, { inc_votes: votesDifference })
-}
-
-export const patchArticleVotes = (votesDifference, article_id) => {
-  return axios.patch(`${baseURL}/articles/${article_id}`, { inc_votes: votesDifference })
+export const patchVotes = (votesDifference, id, item) => {
+  return axios.patch(`${baseURL}/${item}/${id}`, { inc_votes: votesDifference })
 }
 
 export const sendNewComment = (newComment, loggedInUser, id) => {

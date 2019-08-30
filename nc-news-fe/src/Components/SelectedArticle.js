@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import '../App.css';
 import { Link } from '@reach/router';
-import ArticleVoteUpdater from './ArticleVoteUpdater'
+import VoteUpdater from './VoteUpdater'
 import ErrorPage from './ErrorPage'
 import ReactLoading from 'react-loading';
 
@@ -52,7 +52,7 @@ class SelectedArticle extends Component {
         <p>{topic}</p>
         <p>{body}</p>
         {author !== loggedInUser && (
-          <ArticleVoteUpdater article_id={article_id} votes={votes} />
+          <VoteUpdater id={article_id} votes={votes} item="articles" />
         )}
         <Link to={`/articles/${article_id}/comments`}><p>Comments : {comment_count}</p></Link>
       </div>
