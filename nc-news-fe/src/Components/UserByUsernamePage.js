@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import ErrorPage from './ErrorPage'
+import ReactLoading from 'react-loading';
 
 
 class UserByUsernamePage extends Component {
@@ -34,7 +35,7 @@ class UserByUsernamePage extends Component {
   }
   render() {
     const { user, isLoading, error } = this.state;
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return (<ReactLoading type="spin" color="pink" height={667} width={375} />)
     if (error) return <ErrorPage error={error} />
     const { username, avatar_url, name } = user;
     return (

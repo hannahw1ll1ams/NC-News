@@ -4,6 +4,7 @@ import '../App.css';
 import { Link } from '@reach/router';
 import ArticleVoteUpdater from './ArticleVoteUpdater'
 import ErrorPage from './ErrorPage'
+import ReactLoading from 'react-loading';
 
 
 class SelectedArticle extends Component {
@@ -23,7 +24,7 @@ class SelectedArticle extends Component {
   fetchSingleArticle = () => {
     const { id } = this.props
     api.getSingleArticle(id).then(({ article }) => {
-      this.setState({ article, isLoading: false })
+      this.setState({ article, isLoading: false, error: null })
     })
       .catch(error => {
         this.setState({
@@ -38,7 +39,7 @@ class SelectedArticle extends Component {
   render() {
     const { article, isLoading, error } = this.state
     const { loggedInUser } = this.props;
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return (<ReactLoading type="spin" color="pink" height={667} width={375} />)
     if (error) return <ErrorPage error={error} />
     const { title, body, article_id, topic, author, votes, comment_count } = article;
 

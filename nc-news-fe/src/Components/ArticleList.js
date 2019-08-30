@@ -4,6 +4,7 @@ import ArticleCard from './ArticleCard';
 import '../App.css';
 import Sorter from './Sorter'
 import ErrorPage from './ErrorPage'
+import ReactLoading from 'react-loading';
 
 
 class ArticleList extends Component {
@@ -29,6 +30,7 @@ class ArticleList extends Component {
       this.setState({ articles, isLoading: false })
     })
       .catch(error => {
+        console.dir(error)
         this.setState({
           error: {
             msg: error.response.data.msg,
@@ -42,7 +44,7 @@ class ArticleList extends Component {
     const { articles, isLoading, error } = this.state;
     const articles_topic = this.props.topic;
     const selected_article_id = this.props.article_id;
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return (<ReactLoading type="spin" color="pink" height={667} width={375} />)
     if (error) return <ErrorPage error={error} />
 
     return (<div>

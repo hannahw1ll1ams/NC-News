@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import CommentCard from './CommentCard'
 import CommentAdder from './CommentAdder'
+import ReactLoading from 'react-loading';
 
 
 class CommentsForArticle extends Component {
@@ -41,7 +42,7 @@ class CommentsForArticle extends Component {
   render() {
     const { comments, isLoading } = this.state;
     const { loggedInUser } = this.props;
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return (<ReactLoading type="spin" color="pink" height={667} width={375} />)
     return (
       <div>
         <h2>COMMENTS</h2>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from "@reach/router"
+// import ReactLoading from 'react-loading';
+
 
 class SearchBox extends Component {
   state = {
