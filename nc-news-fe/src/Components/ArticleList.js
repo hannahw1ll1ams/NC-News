@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import * as api from './api';
-import SingleArticle from './SingleArticle';
+import * as api from '../api';
+import ArticleCard from './ArticleCard';
 import '../App.css';
 import Sorter from './Sorter'
 import ErrorPage from './ErrorPage'
@@ -18,7 +18,6 @@ class ArticleList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('updateeeeeee!!')
     if (prevProps.topic !== this.props.topic) {
       this.fetchArticles();
     }
@@ -46,12 +45,12 @@ class ArticleList extends Component {
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
 
-    return (<div className='articleList'>
+    return (<div>
       <Sorter fetchArticles={this.fetchArticles} />
       <ul>
         {articles.map(article => {
           const { article_id, title, topic, created_at, author, votes, comment_count } = article;
-          return <SingleArticle id={article_id} title={title} topic={topic} key={article_id} created_at={created_at} author={author} votes={votes} comment_count={comment_count} articles_topic={articles_topic} selected_article_id={selected_article_id} />
+          return <ArticleCard id={article_id} title={title} topic={topic} key={article_id} created_at={created_at} author={author} votes={votes} comment_count={comment_count} articles_topic={articles_topic} selected_article_id={selected_article_id} />
         })}
       </ul>
     </div>

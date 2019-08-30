@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import '../App.css';
+import formatDateAppearance from '../utils/changeDateFormat'
 
 
-const SingleArticle = ({ title, topic, created_at, author, votes, id, comment_count, articles_topic, selected_article_id }) => {
+const ArticleCard = ({ title, topic, created_at, author, votes, id, comment_count, articles_topic, selected_article_id }) => {
   return (
-    <li>
-      {/* 
-      if url has topic in it, then {`articles/${id}`}, if doesn't then another {`/articles/${id}`}*/}
+    <li className='singleArticle'>
       <Link to={!articles_topic ? `/articles/${id}` : `/${articles_topic}/articles/${id}`}><p>{title}</p></Link>
       <p>{topic}</p>
       <Link to={`/users/${author}`} ><p>{author}</p></Link>
       <p>Votes: {votes}</p>
-      <p>{created_at}</p>
+      <p>Created at: {formatDateAppearance(created_at)}</p>
       <p>Comment Count: {comment_count}</p>
     </li >
   );
 };
 
-export default SingleArticle;
+export default ArticleCard;

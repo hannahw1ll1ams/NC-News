@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as api from './api';
+import * as api from '../api';
 import '../App.css';
 import { Link } from '@reach/router';
 import ArticleVoteUpdater from './ArticleVoteUpdater'
@@ -12,25 +12,20 @@ class SelectedArticle extends Component {
     isLoading: true,
     error: null
   }
-
   componentDidMount() {
     this.fetchSingleArticle()
   }
-
   componentDidUpdate(prevProps, prevState) {
-    console.log('updateeeeeee!!')
     if (prevProps.id !== this.props.id) {
       this.fetchSingleArticle();
     }
   }
-
   fetchSingleArticle = () => {
     const { id } = this.props
     api.getSingleArticle(id).then(({ article }) => {
       this.setState({ article, isLoading: false })
     })
       .catch(error => {
-        console.dir(error)
         this.setState({
           error: {
             msg: error.response.data.msg,
@@ -58,7 +53,7 @@ class SelectedArticle extends Component {
         {author !== loggedInUser && (
           <ArticleVoteUpdater article_id={article_id} votes={votes} />
         )}
-        <Link to={`/${article_id}/comments`}><p>Comments : {comment_count}</p></Link>
+        <Link to={`/articles/${article_id}/comments`}><p>Comments : {comment_count}</p></Link>
       </div>
     );
   }

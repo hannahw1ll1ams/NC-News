@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as api from './api';
+import * as api from '../api';
 import CommentCard from './CommentCard'
 import CommentAdder from './CommentAdder'
 
@@ -9,24 +9,20 @@ class CommentsForArticle extends Component {
     comments: null,
     isLoading: true
   }
-
   componentDidMount() {
     this.fetchCommentsForArticle()
   }
-
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.id !== this.props.id) {
       this.fetchCommentsForArticle();
     }
   }
-
   fetchCommentsForArticle = () => {
     const { id } = this.props;
     api.getCommentsForArticle(id).then(({ comments }) => {
       this.setState({ comments, isLoading: false })
     })
   }
-
   deleteCommentByClick = (id) => {
     api.deleteComment(id).then(() => {
       this.setState(({ comments }) => {
@@ -34,7 +30,6 @@ class CommentsForArticle extends Component {
       })
     })
   }
-
   postNewComment = (newComment) => {
     const { loggedInUser, id } = this.props;
     api.sendNewComment(newComment, loggedInUser, id).then((newlyPostedComment) => {

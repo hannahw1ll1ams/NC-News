@@ -5,13 +5,11 @@ class Sorter extends Component {
     sort_by: "created_at",
     order: "desc"
   }
-
   handleSubmit = (event) => {
     event.preventDefault()
     const { sort_by, order } = this.state;
     this.props.fetchArticles(sort_by, order)
   }
-
   handleChange = (event) => {
     const { name, value } = event.target
     this.setState({ [name]: value })

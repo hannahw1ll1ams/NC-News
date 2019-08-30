@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-// import * as api from './api';
 import { navigate } from "@reach/router"
-
-
 
 class SearchBox extends Component {
   state = {
     username: "",
     isLoading: true
   }
-
   handleChange = (event) => {
     this.setState({ username: event.target.value })
   }
@@ -19,10 +15,7 @@ class SearchBox extends Component {
     this.setState({ username: this.state.input })
     navigate(`/users/${this.state.username}`)
   }
-
   render() {
-    // const { isLoading } = this.state
-    // if (isLoading) return <p>Loading...</p>
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

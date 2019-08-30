@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as api from './api';
+import * as api from '../api';
 import { Link } from '@reach/router';
 import ErrorPage from './ErrorPage'
 
@@ -10,21 +10,16 @@ class UserByUsernamePage extends Component {
     isLoading: true,
     error: null
   }
-
   componentDidMount() {
     this.fetchUserbyUsername();
   }
-
   componentDidUpdate(prevProps, prevState) {
-    console.log('updateeeeeee!!')
     if (prevProps.username !== this.props.username) {
       this.fetchUserbyUsername();
     }
   }
-
   fetchUserbyUsername = () => {
     const { username } = this.props;
-    // console.log(username)
     api.getUser(username).then((user) => {
       this.setState({ user, isLoading: false })
     })
@@ -41,7 +36,6 @@ class UserByUsernamePage extends Component {
     const { user, isLoading, error } = this.state;
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
-
     const { username, avatar_url, name } = user;
     return (
       <div>

@@ -27,7 +27,7 @@ class App extends Component {
           <ArticlesByTopicList path='/topics/:topic' loggedInUser={loggedInUser} />
           <SelectedArticleByID path='/:topic/articles/:article_id' loggedInUser={loggedInUser} />
           <SelectedArticleByID path='/articles/:article_id' loggedInUser={loggedInUser} />
-          <CommentsBySelectedArticle path='/:article_id/comments' loggedInUser={loggedInUser} />
+          <CommentsBySelectedArticle path='/articles/:article_id/comments' loggedInUser={loggedInUser} />
           <UserbyUsername path='/users/:username' />
           <ArticlesByUserList path='/articles/user/:username' loggedInUser={loggedInUser} />
           <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
@@ -57,7 +57,7 @@ const ArticlesByTopicList = ({ topic }) => {
 
 const SelectedArticleByID = ({ topic, article_id, loggedInUser }) => {
   return (
-    <div>
+    <div className='container'>
       <ArticleList topic={topic} article_id={article_id} />
       <SelectedArticle id={article_id} loggedInUser={loggedInUser} />
     </div>
