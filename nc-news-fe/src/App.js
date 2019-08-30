@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Components/Header'
 import './App.css';
-import TopNavBar from './Components/TopNavBar';
+// import TopNavBar from './Components/TopNavBar';
 import TopicsNavBar from './Components/TopicsNavBar';
 import { Router } from '@reach/router';
 import ErrorPage from './Components/ErrorPage'
@@ -20,7 +20,7 @@ class App extends Component {
     const { loggedInUser } = this.state;
     return (
       <div className="App">
-        <TopNavBar className='TopNavBar' loggedInUser={loggedInUser} />
+        {/* <TopNavBar className='TopNavBar' loggedInUser={loggedInUser} /> */}
         <Header className='Header' />
         <TopicsNavBar className='TopicsNavBar' loggedInUser={loggedInUser} />
         <Router>

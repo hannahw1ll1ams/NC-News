@@ -53,8 +53,22 @@ nav {
   color: red;
 }
 
-.singleArticle {
+.singleArticle-football {
 background-color: aqua;
+list-style: none;
+width: 600px;
+margin: 0 auto; 
+}
+
+.singleArticle-cooking {
+background-color: red;
+list-style: none;
+width: 600px;
+margin: 0 auto; 
+}
+
+.singleArticle-coding {
+background-color: yellow;
 list-style: none;
 width: 600px;
 margin: 0 auto; 
@@ -69,4 +83,9 @@ margin: 0 auto;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+}
+
+.header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
 }

@@ -6,7 +6,7 @@ import formatDateAppearance from '../utils/changeDateFormat'
 
 const ArticleCard = ({ title, topic, created_at, author, votes, id, comment_count, articles_topic, selected_article_id }) => {
   return (
-    <li className='singleArticle'>
+    <li className={`singleArticle-${topic}`}>
       <Link to={!articles_topic ? `/articles/${id}` : `/${articles_topic}/articles/${id}`}><p>{title}</p></Link>
       <p>{topic}</p>
       <Link to={`/users/${author}`} ><p>{author}</p></Link>
@@ -18,3 +18,4 @@ const ArticleCard = ({ title, topic, created_at, author, votes, id, comment_coun
 };
 
 export default ArticleCard;
+
