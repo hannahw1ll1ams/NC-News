@@ -14,14 +14,16 @@ class SearchBox extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ username: this.state.input })
-    navigate(`/users/${this.state.username}`)
+    event.target.user_body.value = "";
+    const { username } = this.state;
+    navigate(`/users/${username}`)
+    this.setState({ username: "" })
   }
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="Find a user" onChange={this.handleChange} required />
+          <input name="user_body" placeholder="Find a user" onChange={this.handleChange} required />
           <button type='submit'>Search</button>
         </form>
       </div >

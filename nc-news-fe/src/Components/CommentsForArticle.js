@@ -25,11 +25,10 @@ class CommentsForArticle extends Component {
     })
   }
   deleteCommentByClick = (id) => {
-    api.deleteComment(id).then(() => {
-      this.setState(({ comments }) => {
-        return { comments: comments.filter(comment => comment.comment_id !== id) }
-      })
+    this.setState(({ comments }) => {
+      return { comments: comments.filter(comment => comment.comment_id !== id) }
     })
+    api.deleteComment(id)
   }
   postNewComment = (newComment) => {
     const { loggedInUser, id } = this.props;

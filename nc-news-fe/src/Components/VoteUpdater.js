@@ -22,9 +22,9 @@ class VoteUpdater extends Component {
     const { votesChange } = this.state
     return (
       <div>
-        <button class='vote-up-button' onClick={() => this.VotesChanger(1)} type='submit' disabled={votesChange === 1}>VOTE UP</button>
+        <button className='vote-up-button' onClick={() => this.VotesChanger(1)} type='submit' disabled={votesChange === 1}>VOTE UP</button>
         <p>VOTES: {votes + votesChange}</p>
-        <button class='vote-down-button' onClick={() => this.VotesChanger(-1)} type='submit' disabled={votesChange === -1}>VOTE DOWN</button>
+        <button className='vote-down-button' onClick={() => this.VotesChanger(-1)} type='submit' disabled={votesChange === -1}>VOTE DOWN</button>
       </div>
     );
   }

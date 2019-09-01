@@ -11,10 +11,12 @@ class CommentAdder extends Component {
   }
 
   render() {
+    const { isAddingComment } = this.state;
+    const { postNewComment } = this.props;
     return (
       <div>
-        <button onClick={() => { this.handleClick() }} disabled={this.state.isAddingComment}>ADD COMMENT</button>
-        {this.state.isAddingComment && <CommentCreator postNewComment={this.props.postNewComment} />}
+        <button onClick={() => { this.handleClick() }} disabled={isAddingComment}>ADD COMMENT</button>
+        {isAddingComment && <CommentCreator postNewComment={postNewComment} />}
       </div >
     );
   }

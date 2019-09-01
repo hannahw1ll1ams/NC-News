@@ -49,3 +49,9 @@ export const sendNewComment = (newComment, loggedInUser, id) => {
     return data.comment
   })
 }
+
+export const getTopics = () => {
+  return axios.get(`${baseURL}/topics`).then(({ data }) => {
+    return data.topics
+  })
+}
