@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from '@reach/router';
-import '../App.css';
+import '../css/Header.css';
+import Logo from '../images/no-arrow-news-title.png'
 
 
 
 const Header = () => {
   return (
-    <div className='header'>
-      <Link to='/'>NEWS</Link>
+    <div>
+      <img className='NC-NEWS-TITLE' src={Logo} alt='NC-NEWS-TITLE' />
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-import Logo from '../images/north-coders-logo.png'
 import SearchBox from './SearchBox'
 import * as api from '../api';
+import Header from '../Components/Header'
+import '../css/TopNavBar.css';
 
 
 class TopicsNavBar extends Component {
@@ -40,16 +41,20 @@ class TopicsNavBar extends Component {
       //     })}
       //   </ul>
       // </div>
-      <div>
-        <nav>
-          <img className='northcoder-logo' src={Logo} alt='NorthCoders Logo' />
-          <p>Logged in as: {loggedInUser}</p>
-          <SearchBox />
-          <Link to='/topics/football' className='football'>Football</Link>
-          <Link to='/topics/coding' className='coding'>Coding</Link>
-          <Link to='/topics/cooking' className='cooking'>Cooking</Link>
-        </nav>
-      </div>
+      <nav>
+        <div className='TopBarContainer'>
+          <p className='Username'>Logged in as: {loggedInUser}</p>
+          <SearchBox className='searchBox' />
+          <span><Header className='Header' /></span>
+          <div className='topics'>
+            <Link to='/' className='all'>ALL</Link>
+            <Link to='/topics/football' className='football'>FOOTBALL</Link>
+            <Link to='/topics/coding' className='coding'>CODING</Link>
+            <Link to='/topics/cooking' className='cooking'>COOKING</Link>
+          </div>
+        </div>
+      </nav>
+
     );
   }
 }

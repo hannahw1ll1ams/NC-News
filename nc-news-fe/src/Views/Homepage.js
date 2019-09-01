@@ -1,10 +1,11 @@
 import ArticleList from '../Components/ArticleList';
 import React from 'react';
+import '../css/Homepage.css'
 
 
 const Homepage = () => {
   return (
-    <div>
+    <div className='Homepage'>
       <p>THESE ARE ALL THE ARTICLES!</p>
       <ArticleList />
     </div>

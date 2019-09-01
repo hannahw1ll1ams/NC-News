@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import '../App.css';
+import '../css/SelectedArticle.css';
 import { Link } from '@reach/router';
 import VoteUpdater from './VoteUpdater'
 import ErrorPage from './ErrorPage'

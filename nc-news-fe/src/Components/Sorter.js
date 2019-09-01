@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/SortOptions.css'
 
 class Sorter extends Component {
   state = {
@@ -16,17 +17,17 @@ class Sorter extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <select name="sort_by" onChange={this.handleChange}>
+      <form onSubmit={this.handleSubmit} className="sortOptions">
+        <select className="options" name="sort_by" onChange={this.handleChange}>
           <option value='created_at'>Date</option>
           <option value='comment_count'>Comment Count</option>
           <option value='votes'>Votes</option>
         </select>
-        <select name="order" onChange={this.handleChange}>
+        <select className="options" name="order" onChange={this.handleChange}>
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>
         </select>
-        <button>SORT</button>
+        <button className="options button">SORT</button>
       </form>
     );
   }

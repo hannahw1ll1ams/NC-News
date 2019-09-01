@@ -1,0 +1,47 @@
+.TopBarContainer {
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 25px;
+    text-decoration: none;
+}
+.Username{
+      float: left;
+
+}
+.topics{
+text-align: right;
+}
+
+.all{
+  text-decoration: none;
+      /* text-align: right; */
+  /* display: inline; */
+
+}
+
+.football {
+text-decoration: none;
+    text-align: right;
+  /* display: inline; */
+    color: #3B61AD;
+}
+
+.coding {
+  text-decoration: none;
+      /* text-align: right; */
+  /* display: inline; */
+color: #DA3927;
+}
+
+.cooking{
+    text-align: right;
+    text-decoration: none;
+  display: inline;
+color: #F5AC2B;
+
+}
+
+.LoggedInUser {
+    display: inline;
+
+}

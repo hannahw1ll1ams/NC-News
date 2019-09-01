@@ -1,81 +1,12 @@
-.container {
+/* .container {
   display: grid;
   grid-template-columns: 50px 50px;
-}
+} */
 
 
 .App {
   text-align: center;
-}
-
-nav {
-  border: green;
-}
-
-.football {
-  color: pink;
-  text-align: left;
-
-}
-
-.coding {
-  text-align: center
-}
-
-.cooking{
-    text-align: right;
-}
-
-.selectedArticle {
-  text-align: left;
-  background-color: aquamarine;
-  width: 600px;
-  margin: 0 auto; 
-}
-
-.vote-up-button {
-  display: inline-block;
-	border-radius: 3px;
-	padding: 7px 12px;
-	border: 1px solid #D5D5D5;
-	background-image: linear-gradient(#EEE, #DDD);
-  font: 700 13px/18px Helvetica, arial;
-  color: green;
-}
-
-.vote-down-button {
-  display: inline-block;
-	border-radius: 3px;
-	padding: 7px 12px;
-	border: 1px solid #D5D5D5;
-	background-image: linear-gradient(#EEE, #DDD);
-  font: 700 13px/18px Helvetica, arial;
-  color: red;
-}
-
-.singleArticle-football {
-background-color: aqua;
-list-style: none;
-width: 600px;
-margin: 0 auto; 
-}
-
-.singleArticle-cooking {
-background-color: red;
-list-style: none;
-width: 600px;
-margin: 0 auto; 
-}
-
-.singleArticle-coding {
-background-color: yellow;
-list-style: none;
-width: 600px;
-margin: 0 auto; 
-}
-
-.northcoder-logo {
-  height: 10vmin;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
@@ -83,9 +14,4 @@ margin: 0 auto;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-}
-
-.header {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 20px;
 }

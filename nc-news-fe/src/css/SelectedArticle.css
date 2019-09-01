@@ -1,0 +1,11 @@
+
+.selectedArticle {
+  text-align: left;
+  background-color: aquamarine;
+  width: 500px;
+  margin: 0 auto; 
+}
+
+.time {
+  text-align: left;
+}

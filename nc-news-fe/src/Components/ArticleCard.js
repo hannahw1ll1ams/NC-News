@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import '../App.css';
+import '../css/ArticleList.css';
 import formatDateAppearance from '../utils/changeDateFormat'
 
 
@@ -8,10 +8,10 @@ const ArticleCard = ({ title, topic, created_at, author, votes, id, comment_coun
   return (
     <li className={`singleArticle-${topic}`}>
       <Link to={!articles_topic ? `/articles/${id}` : `/${articles_topic}/articles/${id}`}><p>{title}</p></Link>
-      <p>{topic}</p>
+      {/* <p>{topic}</p> */}
       <Link to={`/users/${author}`} ><p>{author}</p></Link>
       <p>Votes: {votes}</p>
-      <p>Created at: {formatDateAppearance(created_at)}</p>
+      <p className='time'>Created at: {formatDateAppearance(created_at)}</p>
       <p>Comment Count: {comment_count}</p>
     </li >
   );
