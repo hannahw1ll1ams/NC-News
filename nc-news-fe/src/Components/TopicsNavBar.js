@@ -45,7 +45,7 @@ class TopicsNavBar extends Component {
         <div className='TopBarContainer'>
           <p className='Username'>Logged in as: {loggedInUser}</p>
           <SearchBox className='searchBox' />
-          <span><Header className='Header' /></span>
+          <Header className='Header' />
           <div className='topics'>
             <Link to='/' className='all'>ALL</Link>
             <Link to='/topics/football' className='football'>FOOTBALL</Link>
