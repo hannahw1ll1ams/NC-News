@@ -11,16 +11,17 @@ class CommentCreator extends Component {
     event.preventDefault()
     const { newComment } = this.state;
     this.props.postNewComment(newComment)
-    event.target.comment_body.value = "";
+    // event.target.comment_body.value = "";
     this.setState({ newComment: "" })
   }
   render() {
+    const { newComment } = this.state
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
             TYPE YOUR NEW COMMENT HERE:
-          <input name="comment_body" onChange={this.handleChange} required />
+          <input name="comment_body" onChange={this.handleChange} value={newComment} required />
             <button>Submit</button>
           </label>
         </form>
