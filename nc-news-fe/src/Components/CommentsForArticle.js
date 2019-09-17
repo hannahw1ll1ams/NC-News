@@ -35,6 +35,7 @@ class CommentsForArticle extends Component {
     api.sendNewComment(newComment, loggedInUser, id).then((newlyPostedComment) => {
       const allComments = [newlyPostedComment, ...this.state.comments];
       this.setState({ comments: allComments })
+      // this.setState((currentState) => return { comments: [newlyPostedComment, ...currentState.comments] })??
     })
   }
 

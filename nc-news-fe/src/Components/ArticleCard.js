@@ -13,9 +13,8 @@ const ArticleCard = ({ title, topic, created_at, author, votes, id, comment_coun
       <p>Votes: {votes}</p>
       <p className='time'>Created at: {formatDateAppearance(created_at)}</p>
       <p>Comment Count: {comment_count}</p>
-    </li >
+    </li>
   );
 };
 
 export default ArticleCard;
-
